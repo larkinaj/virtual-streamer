@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "openai": "^3.2.1",
+    "tmi.js": "^1.8.5"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "virtual-streamer",
+  "description": "",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larkinaj/virtual-streamer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/larkinaj/virtual-streamer/issues"
+  },
+  "homepage": "https://github.com/larkinaj/virtual-streamer#readme"
+}

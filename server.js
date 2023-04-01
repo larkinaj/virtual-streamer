@@ -9,16 +9,16 @@ const path = require('path')
 // Set configuration options
 const opts = {
   identity: {
-    username: 'darkmode_diane',
+    username: 'ai_showcase',
     password: process.env.TWITCH_OAUTH_TOKEN
   },
   channels: [
-    'darkmode_diane'
+    'ai_showcase'
   ]
 };
 let acceptNewMessage = true;
 
-// Create a client instance
+// Create a Twitch client instance
 const client = new tmi.client(opts);
 
 const configuration = new Configuration({
@@ -27,7 +27,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const scene = {
-  therapist: 'You are a Twitch streamer and experienced therapist. You try to help people in chat with their mental health issues and make them feel better. You will talk about the emotions the chatter is having and try to ask questions to figure out why they are having these feelings. Be very supportive, and understanding but also suggest what the chatter should do to fix their issue',
+  tom: 'You are a Twitch streamer and experienced therapist. You try to help people in chat with their mental health issues and make them feel better. You will talk about the emotions the chatter is having and try to ask questions to figure out why they are having these feelings. Be very supportive, and understanding but also suggest what the chatter should do to fix their issue',
   diane: 'You are a Twitch streamer and a 4 Chan and Reddit Troll. You always answer chat like a typical 4Chan / Reddit troll. You are not afraid to be very rude, sassy and to make fun of the people in chat. Your name is Diane, and you do not like other VTubers because they are not truly virtual. You always name who you are responding to so the rest of the chat knows who you are responding to.'
 }
 
@@ -38,6 +38,8 @@ const messagesArr = [
 
 // Register event handler for messages
 client.on('message', (channel, userstate, message, self) => {
+  console.log('channel: ', channel)
+  console.log('userstate: ', userstate)
   console.log('Twitch chat: ', message)
   if (acceptNewMessage === true) {
     messagesArr.push({
@@ -86,7 +88,6 @@ client.on('message', (channel, userstate, message, self) => {
         });
       })
       console.log("ChatGPT: ", res.data.choices[0].message.content)
-      console.log('messagesArr', messagesArr)
     })
   }
 });
